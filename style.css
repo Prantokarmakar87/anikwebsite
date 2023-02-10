@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/* Resets============================== */
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border: none;
+    text-transform: capitalize;
+}
+:root {
+    --deep-blue: rgb(255, 255, 255);
+    --sky-blue: rgb(255, 255, 255);
+    --gr-color: rgb(184, 182, 182);
+    --gr2-color: rgb(110, 109, 109);
+    --gradient:linear-gradient(90deg, var(--gr-color), var(--gr2-color));
+}   
+
+*::selection {
+    background-color: var(--sky-blue);
+    color: var(--white);
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+body {
+    background-color: black;
+}
+
+
+
+/* Utility Classes================== */
+section {
+    min-height: 100vh;
+    padding: 0 9%;
+    padding-top: 7.5rem;
+    padding-bottom: 2rem;
+}
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .8rem 3rem;
+    border-radius: 5rem;
+    background: var(--gradient);
+    font-size: 1.7rem;
+    color: black;
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    transition: all .3s linear;
+}
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 1rem 2rem 1rem rgba(255, 255, 255, 0.26);
+}
+.heading{
+    text-align: center;
+    background:var(--gradient);
+    color: transparent;
+    -webkit-background-clip: text;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    padding: 1rem;
+}
+
+/* header============================ */
+header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    background: black;
+    box-shadow: 0 .5rem 3rem white;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+header .logo {
+    font-size: 3rem;
+    color: var(--deep-blue);
+}
+header .logo span {
+    color: rgb(255, 255, 255);
+}
+header .navbar a{
+    font-size: 1.7rem;
+    margin-left: 2rem;
+    color: var(--deep-blue);
+}
+header .navbar a:hover {
+    color: var(--sky-blue);
+}
+header input {
+    display: none;
+}
+header label {
+    font-size: 3rem;
+    color: var(--deep-blue);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Home===================== */
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home .image img {
+    width: 40vw;
+    animation: float 3s linear infinite;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0rem);
+    }
+    50% {
+        transform: translateY(-3.5rem);
+    }
+}
+.home .content h3 {
+    font-size: 4.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+.home .content h3 span {
+    color: rgb(192, 191, 191);
+    text-transform: uppercase;
+}
+.home .content p {
+    font-size: 1.7rem;
+    color: rgb(145, 143, 143);
+    padding: 1rem 0;
+}
+
+
+/* media queries */
+@media (max-width:1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width:991px) {
+    section {
+        padding: 0 3%;
+        padding-top: 7.5rem;
+        padding-bottom: 2rem;
+    }
+}
+
+
+@media (max-width:768px) {
+    header label{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header .navbar{
+        position: absolute;
+        top:100%; left: 0;
+        width:100%;
+        background:rgb(0, 0, 0);
+        padding:1rem 2rem;
+        border-top: .1rem solid rgba(0,0,0,.2);
+        box-shadow: 1rem 5rem 1rem  1rem rgb(255, 255, 255);
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+        transition: .2s linear;
+    }
+
+    header .navbar a{
+        display: block;
+        margin:2rem 0;
+        font-size: 2rem;
+    }
+
+    header input:checked ~ .navbar{
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    header input:checked ~ label::before{
+        content:'\f00d';
+    }
+
+    .home {
+        flex-flow: column-reverse;
+    }
+    .home .image img {
+        width: 100%;
+    }
+    .home .content h3 {
+        font-size: 3rem;
+    }
+    .home .content p {
+        font-size: 1.5rem;
+    }
+    .about {
+        background-position: right;
+    }
+    .newsletter p {
+        width: auto;
+    }
+}
+
+@media (max-width:450px){
+    html {
+        font-size: 50%;
+    }
+    .about .column .content .buttons a{
+        width:100%;
+        text-align: center;
+    }
+    .about .column .content p{
+       padding: 0.5rem 0;
+    }
+    .about .column .content .buttons a:last-child{
+        margin: 1rem 0;
+    }
+
+}
